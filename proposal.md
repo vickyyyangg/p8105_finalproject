@@ -37,24 +37,53 @@ Diabetes Health Indicators Dataset
 <https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset?select=diabetes_binary_5050split_health_indicators_BRFSS2015.csv>
 
 **The planned analyses / visualizations / coding challenges:**  
-Data cleaning  
-Exploratory data analyses  
-Statistical analysis  
-- Logistic regression to predict odds ratios  
-- Predict diabetes from behavioral indicators, and compare different
-predictive models  
-- Chi-square test / t-test / ANOVA (compare characteristics between
-diabetic and non-diabetic groups)
+1. Data Preparation
 
-Visualization  
-- Scatter plots  
-- Bar graph to see distribution trends  
-- Box plot  
-- Heatmap
+- Perform data cleaning to handle missing values, outliers, and variable
+  type inconsistencies.
 
-**The planned timeline:**  
-11/4 ~ 11/9 Finalize topic/ download and clean data  
-11/10 ~ 11/15 Exploratory data analysis  
-11/16 ~ 11/21 Model development (logistic regression & validation)  
-11/22 ~ 11/27 Create a dashboard and website  
-11/28 ~ 12/6 Write a report / screencast recording
+- Create derived variables if necessary (BMI categories, activity
+  levels).
+
+2.  Exploratory Data Analysis (EDA)
+
+- Summarize descriptive statistics for key variables.
+
+- Explore distributions and relationships between variables related to
+  diabetes status.
+
+3.  Statistical Analyses
+
+- Logistic Regression: Estimate odds ratios to identify significant
+  predictors of diabetes.
+
+- Predictive Modeling: Build and compare different models to predict
+  diabetes from behavioral indicators.
+
+- Group Comparisons: Conduct appropriate tests to compare
+  characteristics between diabetic and non-diabetic groups:
+
+  - Chi-square test for categorical variables
+
+  - t-test for two-group mean comparisons
+
+4.  Data Visualization
+
+- Scatter plots: Examine relationships between continuous variables.
+
+- Bar graphs: Visualize frequency distributions and categorical
+  comparisons.
+
+- Box plots: Display variable distributions and identify outliers.
+
+- Heatmaps: Visualize correlation structures among predictors.
+
+**The planned timeline:**
+
+| Period              | Task Description                                     |
+|---------------------|------------------------------------------------------|
+| **Nov 4 – Nov 9**   | Finalize topic / Download and clean data             |
+| **Nov 10 – Nov 15** | Exploratory data analysis                            |
+| **Nov 16 – Nov 21** | Model development (logistic regression & validation) |
+| **Nov 22 – Nov 27** | Create dashboard and website                         |
+| **Nov 28 – Dec 6**  | Write report / Screencast recording                  |
