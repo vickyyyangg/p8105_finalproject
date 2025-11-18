@@ -59,19 +59,6 @@ diabetes %>%
 
 ```
 
-```{r}
-library(DataExplorer)
-
-# 전체 데이터 자동 프로파일링
-create_report(
-  data = diabetes,
-  output_file = "diabetes_profile_report.html",
-  output_dir = getwd(),  # 현재 폴더
-  y = "diabetes_012"     # 타깃 변수 지정 가능
-)
-
-
-```
 
 ```{r}
 library(SmartEDA)
