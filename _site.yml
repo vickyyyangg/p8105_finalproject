@@ -6,9 +6,9 @@ navbar:
     - text: "Shiny"
       href: 
     - text: "Dashboard"
-      href: dashboard.html
+      href: diabetes.html
     - text: "Something"
-      href: 
+      href: index.html
     - icon: fa-envelope fa-lg
       href: 
     - icon: fa-github fa-lg

@@ -1,0 +1,9 @@
+---
+title: "Index"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# This is our final project website

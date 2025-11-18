@@ -37,7 +37,6 @@ diabetes =
   janitor::clean_names() 
   
 
-
 # Check for missing values
 colSums(is.na(diabetes))
 ```
@@ -59,14 +58,4 @@ diabetes %>%
 
 ```
 
-
-```{r}
-library(SmartEDA)
-
-ExpReport(
-  data = diabetes,
-  op_file = "diabetes_smartEDA_report.html",
-  op_dir = getwd()
-)
-```
 
