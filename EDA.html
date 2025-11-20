@@ -32,6 +32,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -379,14 +387,14 @@ diabetes =
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>binary_vars &lt;- c(
+<pre class="r"><code>binary_vars = c(
   &quot;high_bp&quot;, &quot;high_chol&quot;, &quot;chol_check&quot;,
   &quot;smoker&quot;, &quot;stroke&quot;, &quot;heart_diseaseor_attack&quot;,
   &quot;phys_activity&quot;, &quot;hvy_alcohol_consump&quot;, &quot;any_healthcare&quot;,
   &quot;no_docbc_cost&quot;, &quot;diff_walk&quot;, &quot;fruits&quot;, &quot;veggies&quot;
 )
 
-diabetes[binary_vars] &lt;- lapply(
+diabetes[binary_vars] = lapply(
   diabetes[binary_vars],
   function(x) factor(ifelse(x == 1, &quot;Yes&quot;, &quot;No&quot;))
 )</code></pre>
@@ -683,6 +691,58 @@ skim(diabetes)</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Age distribution</p>
+<pre class="r"><code>diabetes |&gt;  
+  count(age, diabetes_012) |&gt;  
+  plot_ly(
+    x = ~age,
+    y = ~n,
+    type = &quot;bar&quot;,
+    color = ~diabetes_012
+  ) |&gt;  
+  layout(
+    barmode = &quot;stack&quot;,
+    title = &quot;Diabetes Prevalence by Age Group&quot;,
+    xaxis = list(title = &quot;Age Group&quot;),
+    yaxis = list(title = &quot;Count&quot;)
+  )</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-354135de1baff176847a" style="width:90%;height:345.6px;"></div>
+<script type="application/json" data-for="htmlwidget-354135de1baff176847a">{"x":{"visdat":{"26002085f88b":["function () ","plotlyVisDat"]},"cur_data":"26002085f88b","attrs":{"26002085f88b":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"stack","title":"Diabetes Prevalence by Age Group","xaxis":{"domain":[0,1],"automargin":true,"title":"Age Group","type":"category","categoryorder":"array","categoryarray":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[5601,7404,10737,13055,14943,17765,22808,26019,26809,24939,17790,12132,13701],"type":"bar","name":"No Diabetes","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[21,54,72,142,163,312,418,550,702,697,602,445,453],"type":"bar","name":"Prediabetes","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[78,140,314,626,1051,1742,3088,4263,5733,6558,5141,3403,3209],"type":"bar","name":"Diabetes","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Sex distribution</p>
+<pre class="r"><code>diabetes |&gt;
+  count(sex, age) |&gt;  
+  plot_ly(
+    x = ~age,
+    y = ~n,
+    type = &quot;bar&quot;,
+    color = ~sex,
+    colors = c(&quot;tomato&quot;,&quot;skyblue&quot;)
+  ) %&gt;% 
+  layout(
+    barmode = &quot;group&quot;,
+    title = &quot;Sex and Age Group Distribution&quot;,
+    xaxis = list(title = &quot;Age Group&quot;),
+    yaxis = list(title = &quot;Count&quot;)
+  )</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-af45e3316b1971c416ea" style="width:90%;height:345.6px;"></div>
+<script type="application/json" data-for="htmlwidget-af45e3316b1971c416ea">{"x":{"visdat":{"2600787d37af":["function () ","plotlyVisDat"]},"cur_data":"2600787d37af","attrs":{"2600787d37af":{"x":{},"y":{},"color":{},"colors":["tomato","skyblue"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"group","title":"Sex and Age Group Distribution","xaxis":{"domain":[0,1],"automargin":true,"title":"Age Group","type":"category","categoryorder":"array","categoryarray":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[2745,3991,6062,7725,9136,10928,14805,17469,18271,17743,13159,9418,10522],"type":"bar","name":"Female","marker":{"color":"rgba(255,99,71,1)","line":{"color":"rgba(255,99,71,1)"}},"textfont":{"color":"rgba(255,99,71,1)"},"error_y":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[2955,3607,5061,6098,7021,8891,11509,13363,14973,14451,10374,6562,6841],"type":"bar","name":"Male","marker":{"color":"rgba(135,206,235,1)","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)"},"error_y":{"color":"rgba(135,206,235,1)"},"error_x":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>diabetes |&gt;
+  count(sex, age) |&gt;  
+  plot_ly(
+    x = ~age,
+    y = ~n,
+    type = &quot;bar&quot;,
+    color = ~sex,
+    colors = c(&quot;tomato&quot;,&quot;skyblue&quot;)
+  ) %&gt;% 
+  layout(
+    barmode = &quot;group&quot;,
+    title = &quot;Sex and Age Group Distribution&quot;,
+    xaxis = list(title = &quot;Age Group&quot;),
+    yaxis = list(title = &quot;Count&quot;)
+  )</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1d4e91b1c9cd3210ed10" style="width:90%;height:345.6px;"></div>
+<script type="application/json" data-for="htmlwidget-1d4e91b1c9cd3210ed10">{"x":{"visdat":{"2600cb196d5":["function () ","plotlyVisDat"]},"cur_data":"2600cb196d5","attrs":{"2600cb196d5":{"x":{},"y":{},"color":{},"colors":["tomato","skyblue"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"group","title":"Sex and Age Group Distribution","xaxis":{"domain":[0,1],"automargin":true,"title":"Age Group","type":"category","categoryorder":"array","categoryarray":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[2745,3991,6062,7725,9136,10928,14805,17469,18271,17743,13159,9418,10522],"type":"bar","name":"Female","marker":{"color":"rgba(255,99,71,1)","line":{"color":"rgba(255,99,71,1)"}},"textfont":{"color":"rgba(255,99,71,1)"},"error_y":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["18-24","25–29","30–34","35–39","40–44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80+"],"y":[2955,3607,5061,6098,7021,8891,11509,13363,14973,14451,10374,6562,6841],"type":"bar","name":"Male","marker":{"color":"rgba(135,206,235,1)","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)"},"error_y":{"color":"rgba(135,206,235,1)"},"error_x":{"color":"rgba(135,206,235,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>diabetes |&gt; 
   ggplot(aes(x = bmi, fill = diabetes_012, group = diabetes_012)) +
   geom_histogram(aes(y = ..density..), bins = 40, alpha = 0.6, color = &quot;white&quot;) +
@@ -694,7 +754,7 @@ skim(diabetes)</code></pre>
     y = &quot;Density&quot;,
     fill = &quot;Diabetes Status&quot;
   )</code></pre>
-<p><img src="EDA_files/figure-html/unnamed-chunk-4-1.png" width="90%" /></p>
+<p><img src="EDA_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
 
 
 

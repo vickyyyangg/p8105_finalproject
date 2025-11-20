@@ -1,9 +1,14 @@
 ---
-title: "Index"
-output: 
+title: "Exploring Diabetes Risk Factors"
+output:
   html_document:
-    toc: true
-    toc_float: true
+    self_contained: false
+    theme: null
+    toc: false
+    includes:
+      in_header: massively/header.html
+      before_body: massively/body_start.html
+      after_body: massively/body_end.html
+
 ---
 
-# This is our final project website

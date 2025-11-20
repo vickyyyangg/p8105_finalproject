@@ -1,6 +1,16 @@
 ---
-title: "Exploratory data analyses"
-output: html_document
+title: "Exploring Diabetes Risk Factors"
+output:
+  html_document:
+    self_contained: false
+    theme: null
+    toc: false
+    includes:
+      in_header: template/header.html
+      before_body: template/body_start.html
+      after_body: template/body_end.html
+---
+
 ---
 
 ```{r, include = FALSE, message = FALSE, warning = FALSE}
@@ -142,6 +152,48 @@ library(skimr)
 skim(diabetes)
 ```
 
+Diabetes distribution
+
+```{r}
+diabetes |>  
+  count(diabetes_012) |>  
+  plot_ly(
+    x = ~diabetes_012,
+    y = ~n,
+    type = "bar",
+    color = ~diabetes_012
+  ) |>  
+  layout(
+    barmode = "stack",
+    title = "Diabetes Prevalence",
+    xaxis = list(title = "Age Group"),
+    yaxis = list(title = "Count")
+  )
+```
+
+Sex & Age distribution
+
+```{r}
+diabetes |>
+  count(sex, age) |>  
+  plot_ly(
+    x = ~age,
+    y = ~n,
+    type = "bar",
+    color = ~sex,
+    colors = c("tomato","skyblue")
+  ) %>% 
+  layout(
+    barmode = "group",
+    title = "Sex and Age Group Distribution",
+    xaxis = list(title = "Age Group"),
+    yaxis = list(title = "Count")
+  )
+```
+
+
+
+
 
 ```{r}
 diabetes |> 
@@ -155,7 +207,6 @@ diabetes |>
     y = "Density",
     fill = "Diabetes Status"
   )
-
 ```
 
 
