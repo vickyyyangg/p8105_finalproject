@@ -1,14 +1,15 @@
 ---
-title: "Data Summary"
+title: "Data Overview"
 output: 
   html_document:
     toc: true
     toc_float: true
     theme: cosmo
 ---
-### Data Sets
+### <b>Data Sets</b>
 
-### Data Cleaning
+
+### <b>Data Cleaning</b>
 
 ```{r, include = FALSE, message = FALSE, warning = FALSE}
 # Load required libraries
@@ -33,11 +34,6 @@ options(
 
 scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
-```
-
-```{r}
-diabetess = 
-  read_csv("Diabete datasets/diabetes_012_health_indicators_BRFSS2015.csv")
 ```
 
 
@@ -147,8 +143,15 @@ diabetes[binary_vars] = lapply(
 
 Data have `r nrow(diabetes)` records and `r ncol(diabetes)` variables. Each record contains an individual's BRFSS survey responses.
 
+### <b>Data Summary</b>
+```{r}
+#data summary
+library(skimr)
+skim(diabetes)
+```
 
-### Data Variables
+
+### <b>Data Variables</b>
 The data variables that will be included in the EDA are:
 
 `Diabetes_binary`: 0 = no diabetes 1 = prediabetes 2 = diabetes

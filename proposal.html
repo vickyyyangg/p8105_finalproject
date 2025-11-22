@@ -16,7 +16,7 @@
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,6 +224,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -228,6 +294,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -257,7 +333,16 @@ $(document).ready(function () {
   <a href="introduction.html">Introduction</a>
 </li>
 <li>
+  <a href="data.html">Data</a>
+</li>
+<li>
   <a href="EDA.html">EDA</a>
+</li>
+<li>
+  <a href="analysis.html">Analysis</a>
+</li>
+<li>
+  <a href="discussion.html">Discussion</a>
 </li>
 <li>
   <a>
@@ -285,58 +370,79 @@ $(document).ready(function () {
 </div>
 
 
-<p><strong>Group members (names and UNIs):</strong><br />
-- Yvonne Xie yx3033<br />
-- Rosie Kwon rk3445<br />
-- Vicky Yang vy2196<br />
-- Yiying Chen yc4776<br />
-- Charlotte Zhang jz4027</p>
-<p><strong>The tentative project title:</strong> Exploring Diabetes Risk
-Factors in the United States</p>
-<p><strong>The motivation for this project:</strong> Diabetes is a
-growing public health challenge in the United States, affecting millions
-of adults each year. As Type 2 diabetes is largely preventable,
-identifying risk factors such as physical activity, smoking, and blood
-pressure levels etc can help guide preventive interventions and health
-education efforts. Our project aims to analyze how behavioral factors
-are associated with diabetes prevalence using the CDC’s Behavioral Risk
-Factor Surveillance System (BRFSS) data. Also, we aim to develop a
-predictive model that estimates diabetes risk based on their health
-indicators. By the end of this project, we hope to contribute to the
-insights into which health behaviors and demographic characteristics are
-most predictive of diabetes risk.</p>
-<p><strong>The intended final products:</strong><br />
-- A website contains an overview of the project scope, data, approaches,
-visualizations, and other results, in a way that is accessible to a
-broad audience. Include the full report as a page on the website, so
-that readers can find a detailed explanation of your work.<br />
-- A 2-minute screencast presenting the main results and insights and
-publish on Youtube.</p>
-<p><strong>The anticipated data sources:</strong><br />
-Diabetes Health Indicators Dataset<br />
+<div id="group-members" class="section level3">
+<h3><b>Group Members</b></h3>
+<ul>
+<li>Yvonne Xie yx3033<br />
+</li>
+<li>Rosie Kwon rk3445<br />
+</li>
+<li>Vicky Yang vy2196<br />
+</li>
+<li>Yiying Chen yc4776<br />
+</li>
+<li>Charlotte Zhang jz4027</li>
+</ul>
+</div>
+<div id="tentative-project-title" class="section level3">
+<h3><b>Tentative Project Title</b></h3>
+<p>Exploring Diabetes Risk Factors in the United States</p>
+</div>
+<div id="motivation" class="section level3">
+<h3><b>Motivation</b></h3>
+<p>Diabetes is a growing public health challenge in the United States,
+affecting millions of adults each year. As Type 2 diabetes is largely
+preventable, identifying risk factors such as physical activity,
+smoking, and blood pressure levels etc can help guide preventive
+interventions and health education efforts. Our project aims to analyze
+how behavioral factors are associated with diabetes prevalence using the
+CDC’s Behavioral Risk Factor Surveillance System (BRFSS) data. Also, we
+aim to develop a predictive model that estimates diabetes risk based on
+their health indicators. By the end of this project, we hope to
+contribute to the insights into which health behaviors and demographic
+characteristics are most predictive of diabetes risk.</p>
+</div>
+<div id="intended-final-products" class="section level3">
+<h3><b>Intended Final Products</b></h3>
+<ul>
+<li>A website contains an overview of the project scope, data,
+approaches, visualizations, and other results, in a way that is
+accessible to a broad audience. Include the full report as a page on the
+website, so that readers can find a detailed explanation of your
+work.<br />
+</li>
+<li>A 2-minute screencast presenting the main results and insights and
+publish on Youtube.</li>
+</ul>
+</div>
+<div id="anticipated-data-sources" class="section level3">
+<h3><b>Anticipated Data Sources</b></h3>
+<p>Diabetes Health Indicators Dataset<br />
 <a
 href="https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset?select=diabetes_binary_5050split_health_indicators_BRFSS2015.csv"
 class="uri">https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset?select=diabetes_binary_5050split_health_indicators_BRFSS2015.csv</a></p>
-<p><strong>The planned analyses / visualizations / coding
-challenges:</strong><br />
-1. Data Preparation</p>
+</div>
+<div id="planned-analyses-visualizations" class="section level3">
+<h3><b>Planned Analyses / Visualizations</b></h3>
+<div id="data-preparation" class="section level4">
+<h4>1. Data Preparation</h4>
 <ul>
 <li><p>Perform data cleaning to handle missing values, outliers, and
 variable type inconsistencies.</p></li>
 <li><p>Create derived variables if necessary (BMI categories, activity
 levels).</p></li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Exploratory Data Analysis (EDA)</li>
-</ol>
+</div>
+<div id="exploratory-data-analysis-eda" class="section level4">
+<h4>2. Exploratory Data Analysis (EDA)</h4>
 <ul>
 <li><p>Summarize descriptive statistics for key variables.</p></li>
 <li><p>Explore distributions and relationships between variables related
 to diabetes status.</p></li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Statistical Analyses</li>
-</ol>
+</div>
+<div id="statistical-analyses" class="section level4">
+<h4>3. Statistical Analyses</h4>
 <ul>
 <li><p>Logistic Regression: Estimate odds ratios to identify significant
 predictors of diabetes.</p></li>
@@ -349,9 +455,9 @@ characteristics between diabetic and non-diabetic groups:</p>
 <li><p>t-test for two-group mean comparisons</p></li>
 </ul></li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
-<li>Data Visualization</li>
-</ol>
+</div>
+<div id="data-visualization" class="section level4">
+<h4>4. Data Visualization</h4>
 <ul>
 <li><p>Scatter plots: Examine relationships between continuous
 variables.</p></li>
@@ -362,7 +468,21 @@ outliers.</p></li>
 <li><p>Heatmaps: Visualize correlation structures among
 predictors.</p></li>
 </ul>
-<p><strong>The planned timeline:</strong></p>
+</div>
+</div>
+<div id="coding-challenges" class="section level3">
+<h3><b>Coding Challenges</b></h3>
+<p>Working with BRFSS data presents several coding challenges due to its
+large size. Building a predictive model introduces additional challenges
+such as feature engineering for behavioral and demographic variables,
+handling class imbalance in diabetes outcomes, and performing
+appropriate model validation to avoid overfitting. Therefore, generating
+clear, reproducible visualizations and maintaining an organized,
+well-documented analysis pipeline will be essential for ensuring the
+reliability and easy interpretation of results.</p>
+</div>
+<div id="planned-timeline" class="section level3">
+<h3><b>Planned Timeline</b></h3>
 <table>
 <colgroup>
 <col width="23%" />
@@ -376,30 +496,33 @@ predictors.</p></li>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Nov 4 – Nov 9</strong></td>
+<td>Nov 4 – Nov 9</td>
 <td>Finalize topic / Download and clean data</td>
 </tr>
 <tr class="even">
-<td><strong>Nov 10 – Nov 15</strong></td>
+<td>Nov 10 – Nov 15</td>
 <td>Exploratory data analysis</td>
 </tr>
 <tr class="odd">
-<td><strong>Nov 16 – Nov 21</strong></td>
+<td>Nov 16 – Nov 21</td>
 <td>Model development (logistic regression &amp; validation)</td>
 </tr>
 <tr class="even">
-<td><strong>Nov 22 – Nov 27</strong></td>
+<td>Nov 22 – Nov 27</td>
 <td>Create dashboard and website</td>
 </tr>
 <tr class="odd">
-<td><strong>Nov 28 – Dec 6</strong></td>
+<td>Nov 28 – Dec 6</td>
 <td>Write report / Screencast recording</td>
 </tr>
 </tbody>
 </table>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -432,6 +555,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

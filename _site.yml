@@ -9,8 +9,14 @@ navbar:
       href: report.html  
     - text: "Introduction"
       href: introduction.html 
+    - text: "Data"
+      href: data.html
     - text: "EDA"
       href: EDA.html
+    - text: "Analysis"
+      href: analysis.html
+    - text: "Discussion"
+      href: discussion.html
     - icon: fa-envelope fa-lg
       href: 
     - icon: fa-github fa-lg
